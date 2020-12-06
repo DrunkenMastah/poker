@@ -6,7 +6,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_AUTORCC ON)
 
 find_package(Qt5 COMPONENTS Quick Widgets REQUIRED)
-
+find_package(cpr  REQUIRED)
 add_executable(poker 
     src/main.cpp
     src/cards_helper.cpp
@@ -17,9 +17,12 @@ target_link_libraries(poker
     PRIVATE 
     Qt5::Widgets
     Qt5::Quick
+    cpr::cpr
 )
 
 add_custom_target(run
     COMMAND ./poker
     WORKING_DIRECTORY ${CMAKE_PROJECT_DIR}
 )
+#cmake -B build -GNinja -DCMAKE_TOOLCHAIN_FILE=build/conan_paths.cmake
+#conan install . -if build -s compiler=gcc -s compiler.libcxx=libstdc++11 --build=missing

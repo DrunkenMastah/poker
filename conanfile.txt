@@ -1,0 +1,6 @@
+[requires]
+cpr/1.5.0
+
+[generators]
+cmake_paths
+cmake_find_package
